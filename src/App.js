@@ -23,9 +23,9 @@ function App() {
       setMode('auto')
     }
     if (input === "prev") {
-      setIndex((prev) => (prev - 1 < 0 ? images.length - 1 : prev - 1));
+      setIndex((prevState) => (prevState - 1 < 0 ? images.length - 1 : prevState - 1));
     } else {
-      setIndex((prev) => (prev + 1 > images.length - 1 ? 0 : prev + 1));
+      setIndex((prevState) => (prevState + 1 > images.length - 1 ? 0 : prevState + 1));
     }
   };
 
