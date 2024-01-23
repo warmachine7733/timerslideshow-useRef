@@ -25,10 +25,9 @@ function App() {
   };
 
   const auto = () => {
-    if (mode === "auto") setMode("normal");
-    if (mode === "normal") setMode("auto");
-    if (mode === "normal") {
-      console.log("clear man");
+    if (mode === "auto") setMode("reset");
+    if (mode === "reset") setMode("auto");
+    if (mode === "reset") {
       clearInterval(timer.current);
     } else {
       timer.current = setInterval(() => {
