@@ -25,8 +25,7 @@ function App() {
   };
 
   const auto = () => {
-    if (mode === "auto") setMode("reset");
-    if (mode === "reset") setMode("auto");
+    setMode(mode === "auto" ? "normal" : "auto");
     if (mode === "reset") {
       clearInterval(timer.current);
     } else {
