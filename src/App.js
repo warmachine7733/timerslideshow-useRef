@@ -17,6 +17,11 @@ function App() {
     };
   }, []);
   const handleAction = (input) => {
+    /**stop auto when physically pressed prev or next */
+    if (mode === "reset") {
+      clearInterval(timer.current);
+      setMode('auto')
+    }
     if (input === "prev") {
       setIndex((prev) => (prev - 1 < 0 ? images.length - 1 : prev - 1));
     } else {
@@ -25,7 +30,7 @@ function App() {
   };
 
   const auto = () => {
-    setMode(mode === "auto" ? "normal" : "auto");
+    setMode(mode === "auto" ? "reset" : "auto");
     if (mode === "reset") {
       clearInterval(timer.current);
     } else {
@@ -41,9 +46,9 @@ function App() {
         <img src={`/images/${images[currIndex]}`} alt="displayImage" />
         <Button handleClick={() => handleAction("next")}>next</Button>
       </div>
-      <Button className="autoButton" handleClick={auto}>
-        {mode}
-      </Button>
+      <div className="autoButton">
+        change to: <Button handleClick={auto}>{mode}</Button>
+      </div>
     </div>
   );
 }
